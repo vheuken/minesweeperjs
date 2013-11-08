@@ -45,14 +45,16 @@ function Board (width, height, numOfMines)
     }
 }
 
-Board.prototype.draw = function (elementId) 
+Board.prototype.draw = function (boardElementId) 
 {
+    var boardElement = document.getElementById(boardElementId);
+    
     for (var y = 0; y < this.height; y++)
     {
         for (var x = 0; x < this.width; x++)
         {
-            document.getElementById(elementId).innerHTML += this.arrayOfTiles[y][x].isMine;
-            document.getElementById(elementId).innerHTML += "<br>";
+            boardElement.innerHTML += this.arrayOfTiles[y][x].isMine;
         }
+        boardElement.innerHTML += "<br>";
     }
 }
