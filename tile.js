@@ -1,5 +1,5 @@
-var TILE_UNCLICKED_HTML = '<div class="tile_unclicked"></div>';
-var TILE_CLICKED_HTML   = '<div class="tile_clicked"></div>';
+var TILE_UNCLICKED_HTML = '<span class="tile_unclicked">F</span>';
+var TILE_CLICKED_HTML   = '<span class="tile_clicked"><G/span>';
 
 function Tile (isMine)
 {
