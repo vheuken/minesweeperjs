@@ -1,8 +1,13 @@
+var TILE_UNCLICKED_HTML = '<div id="tile_unclicked"></div>';
+var TILE_CLICKED_HTML   = '<div id="tile_clicked"></div>';
+
 function Tile (isMine)
 {
     this.isMine = isMine;
     this.isClicked = true;
     this.isFlagged = false;
+    
+    this.html = TILE_UNCLICKED_HTML;
 }
 
 Tile.prototype.click = function ()

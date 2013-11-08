@@ -53,7 +53,7 @@ Board.prototype.draw = function (boardElementId)
     {
         for (var x = 0; x < this.width; x++)
         {
-            boardElement.innerHTML += this.arrayOfTiles[y][x].isMine;
+            boardElement.innerHTML += this.arrayOfTiles[y][x].html;
         }
         boardElement.innerHTML += "<br>";
     }
