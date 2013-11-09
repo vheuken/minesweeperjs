@@ -50,6 +50,20 @@ Board.prototype.getTile = function (x, y)
     return this.arrayOfTiles[y][x];
 }
 
+Board.prototype.clickTile = function (x, y)
+{
+    var tile = this.arrayOfTiles[y][x];
+    
+    if ( tile.isMine === true )
+    {
+        return false;
+    }
+    
+    tile.click();
+    
+    return true;
+}
+
 Board.prototype.validate = function (x, y)
 {
     for (var y = 0; y < this.height; y++)

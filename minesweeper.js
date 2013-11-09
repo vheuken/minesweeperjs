@@ -14,14 +14,8 @@ $(document).ready( function()
     {
         var x = $(this).attr('data-x');
         var y = $(this).attr('data-y');
-        
-        var tile = board.getTile(x, y);
-        
-        if ( tile.isMine === false )
-        {
-            tile.click();
-        }
-        else
+       
+        if ( board.clickTile(x, y) === false )
         {
             alert("You hit a mine!");
             newGame();
