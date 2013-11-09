@@ -35,16 +35,11 @@ function Tile (x, y, isMine)
 
 Tile.prototype.click = function ()
 {
-    if (isClicked === true)
+    if (isClicked === false)
     {
-        isClicked = false;
+        this.isClicked = true;
+        this.html = this.generateHTML();
     }
-    else
-    {
-        isClicked = true;
-    }
-    
-    this.html = this.generateHTML();
 }
 
 Tile.prototype.flag = function ()
