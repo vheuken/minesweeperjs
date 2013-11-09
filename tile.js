@@ -9,12 +9,15 @@ function Tile (x, y, isMine)
         
         if (this.isClicked === true)
         {
-            html += 'class="' + TILE_UNCLICKED_CLASS + '"';
+            html += 'class="' + TILE_UNCLICKED_CLASS + '" ';
         }
         else
         {
-            html += 'class="' + TILE_CLICKED_CLASS + '"';
+            html += 'class="' + TILE_CLICKED_CLASS + '" ';
         }        
+        
+        html += 'data-x="' + this.x + '" ';
+        html += 'data-y="' + this.y + '" ';
         
         html += '></div>';
         
