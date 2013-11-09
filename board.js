@@ -53,13 +53,29 @@ Board.prototype.getTile = function (x, y)
 Board.prototype.clickTile = function (x, y)
 {
     var tile = this.arrayOfTiles[y][x];
+    var arrayOfEmptyTiles = new Array();
     
     if ( tile.isMine === true )
     {
         return false;
     }
     
-    tile.click();
+    var numOfSurroundingMines = this.getNumOfSurroundingMines(tile, arrayOfEmptyTiles);
+    
+    tile.click(numOfSurroundingMines);
+    
+    if ( numOfSurroundingMines === 0 )
+    {
+        console.log("AT S");
+       
+        for (var i = 0; i < arrayOfEmptyTiles.length; i++)
+        {
+            emptyTile = arrayOfEmptyTiles[i];
+            
+            this.clickTile(emptyTile.x, emptyTile.y);
+            
+        }
+    }
     
     return true;
 }
@@ -99,4 +115,128 @@ Board.prototype.draw = function (boardElementId)
         }
         boardElement.innerHTML += "<br>";
     }
+}
+
+Board.prototype.getNumOfSurroundingMines = function(tile, arrayOfEmptyTiles)
+{
+    var tempTile;
+    var num = 0;
+    var x = tile.x;
+    var y = tile.y;
+    
+    if ( y > 0 )
+    {
+        // check above
+        tempTile = this.getTile(x , y-1);
+        if ( tempTile.isMine === true )
+        {
+            num++;
+        }
+        else if ( tempTile.isClicked === false )
+        {
+            arrayOfEmptyTiles.push(tempTile);
+        }
+        
+        // check diagonal-up-right
+        if ( x < (this.width-1) )
+        {
+            tempTile = this.getTile(x+1, y-1);
+            if ( tempTile.isMine === true )
+            {
+                num++;
+            }
+            else if ( tempTile.isClicked === false )
+            {
+                arrayOfEmptyTiles.push(tempTile);
+            }
+        }
+
+        
+        // check diagonal-up-left
+        if ( x > 0 )
+        {
+            tempTile = this.getTile(x-1, y-1);
+            if ( tempTile.isMine === true )
+            {
+                num++;
+            }     
+            else if ( tempTile.isClicked === false )
+            {
+                arrayOfEmptyTiles.push(tempTile);
+            }            
+        }
+
+}
+    
+    if ( y < (this.height-1) )
+    {
+        // check below
+        tempTile = this.getTile(x , y+1);
+        if ( tempTile.isMine === true )
+        {
+            num++;
+        }
+        else if ( tempTile.isClicked === false )
+        {
+            arrayOfEmptyTiles.push(tempTile);
+        }  
+        
+        // check diagonal-down-right
+        if ( x < (this.width-1) )
+        {
+            tempTile = this.getTile(x+1, y+1);
+            if ( tempTile.isMine === true )
+            {
+                num++;
+            }
+            else if ( tempTile.isClicked === false )
+            {
+                arrayOfEmptyTiles.push(tempTile);
+            }
+        }
+        
+        // check diagonal-down-left
+        if ( x > 0 )
+        {
+            tempTile = this.getTile(x-1, y+1);
+            if ( tempTile.isMine === true )
+            {
+                num++;
+            }      
+            else if ( tempTile.isClicked === false )
+            {
+                arrayOfEmptyTiles.push(tempTile);
+            }            
+        }        
+    }
+    
+    // check left
+    if ( x > 0 )
+    {
+        tempTile = this.getTile(x-1, y);
+        if ( tempTile.isMine === true )
+        {
+            num++;
+        }
+        else if ( tempTile.isClicked === false )
+        {
+            arrayOfEmptyTiles.push(tempTile);
+        }
+    }
+    
+    // check right
+    if ( x < (this.width-1) )
+    {
+        tempTile = this.getTile(x+1, y);
+        if ( tempTile.isMine === true )
+        {
+            num++;
+        }  
+        else if ( tempTile.isClicked === false )
+        {
+            arrayOfEmptyTiles.push(tempTile);
+        }        
+    }
+    
+    return num;
 }
