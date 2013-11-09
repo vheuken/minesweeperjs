@@ -40,6 +40,8 @@ Tile.prototype.click = function ()
     {
         isClicked = true;
     }
+    
+    this.html = this.generateHTML();
 }
 
 Tile.prototype.flag = function ()
