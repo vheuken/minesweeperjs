@@ -20,3 +20,12 @@ $(document).ready( function()
         board.draw('board');
     }));
 });
+
+function newGame()
+{
+    this.board = new Board(DEFAULT_BOARD_WIDTH, 
+                           DEFAULT_BOARD_HEIGHT, 
+                           DEFAULT_NUM_OF_MINES);
+    
+    board.draw('board');
+}
