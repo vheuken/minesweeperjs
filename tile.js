@@ -1,8 +1,10 @@
 var TILE_UNCLICKED_HTML = '<div class="tile_unclicked"></div>';
 var TILE_CLICKED_HTML   = '<div class="tile_clicked"></div>';
 
-function Tile (isMine)
+function Tile (x, y, isMine)
 {
+    this.x = x;
+    this.y = y;
     this.isMine = isMine;
     this.isClicked = true;
     this.isFlagged = false;

@@ -33,11 +33,11 @@ function Board (width, height, numOfMines)
         {
             if ( $.inArray(tileIndex, listOfMineIndexes) === -1 )
             {
-                this.arrayOfTiles[y][x] = new Tile(false);
+                this.arrayOfTiles[y][x] = new Tile(x, y, false);
             }
             else
             {
-                this.arrayOfTiles[y][x] = new Tile(true);
+                this.arrayOfTiles[y][x] = new Tile(x, y, true);
             }
             
             tileIndex++;
