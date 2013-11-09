@@ -15,7 +15,17 @@ $(document).ready( function()
         var x = $(this).attr('data-x');
         var y = $(this).attr('data-y');
         
-        board.getTile(x, y).click();
+        var tile = board.getTile(x, y);
+        
+        if ( tile.isMine === false )
+        {
+            tile.click();
+        }
+        else
+        {
+            alert("You hit a mine!");
+            newGame();
+        }
         
         board.draw('board');
     }));
@@ -27,11 +37,11 @@ $(document).ready( function()
         
         if ( board.getTile(x, y).isMine === true )
         {
-            document.getElementById("cheat_text").innerHTML = "a mine!";
+            document.getElementById('cheat_text').innerHTML = 'a mine!';
         }
         else
         {
-            document.getElementById("cheat_text").innerHTML = "not a mine!";
+            document.getElementById('cheat_text').innerHTML = 'not a mine!';
         }
     }));
 });
@@ -43,4 +53,16 @@ function newGame()
                            DEFAULT_NUM_OF_MINES);
     
     board.draw('board');
+}
+
+function validate()
+{
+    if ( board.validate() === true )
+    {
+        alert('Victory! You win!');
+    }
+    else
+    {
+        alert('Fail! You lose!');
+    }
 }

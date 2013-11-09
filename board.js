@@ -50,6 +50,26 @@ Board.prototype.getTile = function (x, y)
     return this.arrayOfTiles[y][x];
 }
 
+Board.prototype.validate = function (x, y)
+{
+    for (var y = 0; y < this.height; y++)
+    {
+        for (var x = 0; x < this.height; x++)
+        {
+            var tile = this.arrayOfTiles[y][x];
+            
+            if ( tile.isClicked === false )
+            {
+                if ( tile.isMine === false )
+                {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
 Board.prototype.draw = function (boardElementId) 
 {
     var boardElement = document.getElementById(boardElementId);
