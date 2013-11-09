@@ -15,7 +15,7 @@ $(document).ready( function()
         var x = $(this).attr('data-x');
         var y = $(this).attr('data-y');
         
-        board.arrayOfTiles[y][x].click();
+        board.getTile(x, y).click();
         
         board.draw('board');
     }));
