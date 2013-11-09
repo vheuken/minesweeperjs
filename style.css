@@ -2,6 +2,15 @@
     height: 64px; 
     width:  64px; 
     border: 2px solid black; 
+    background-color: green; 
+    text-align:center; 
+    display:inline-block
+}
+
+.tile_clicked  {
+    height: 64px; 
+    width:  64px; 
+    border: 2px solid black; 
     background-color: grey; 
     text-align:center; 
     display:inline-block
