@@ -28,7 +28,6 @@ function Tile (x, y, isMine)
     this.y = y;
     this.isMine = isMine;
     this.isClicked = false;
-    this.isFlagged = false;
     
     this.html = this.generateHTML();
 }
@@ -40,17 +39,4 @@ Tile.prototype.click = function ()
         this.isClicked = true;
         this.html = this.generateHTML();
     }
-}
-
-Tile.prototype.flag = function ()
-{
-    if (isFlagged === true)
-    {
-        this.isFlagged = false;
-    }
-    else
-    {
-        this.isFlagged = true;
-    }
-    this.html = this.generateHTML();
 }
