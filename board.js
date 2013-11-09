@@ -45,9 +45,17 @@ function Board (width, height, numOfMines)
     }
 }
 
+Board.prototype.getTile = function (x, y)
+{
+    return this.arrayOfTiles[y][x];
+}
+
 Board.prototype.draw = function (boardElementId) 
 {
     var boardElement = document.getElementById(boardElementId);
+    
+    // clear board
+    boardElement.innerHTML = "";
     
     for (var y = 0; y < this.height; y++)
     {

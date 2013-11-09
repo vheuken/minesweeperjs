@@ -7,7 +7,7 @@ function Tile (x, y, isMine)
     {
         var html = '<div ';
         
-        if (this.isClicked === true)
+        if (this.isClicked === false)
         {
             html += 'class="' + TILE_UNCLICKED_CLASS + '" ';
         }
@@ -27,7 +27,7 @@ function Tile (x, y, isMine)
     this.x = x;
     this.y = y;
     this.isMine = isMine;
-    this.isClicked = true;
+    this.isClicked = false;
     this.isFlagged = false;
     
     this.html = this.generateHTML();
@@ -35,7 +35,7 @@ function Tile (x, y, isMine)
 
 Tile.prototype.click = function ()
 {
-    if (isClicked === false)
+    if (this.isClicked === false)
     {
         this.isClicked = true;
         this.html = this.generateHTML();
@@ -46,10 +46,11 @@ Tile.prototype.flag = function ()
 {
     if (isFlagged === true)
     {
-        isFlagged = false;
+        this.isFlagged = false;
     }
     else
     {
-        isFlagged = true;
+        this.isFlagged = true;
     }
+    this.html = this.generateHTML();
 }

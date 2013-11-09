@@ -9,4 +9,14 @@ var board = new Board(DEFAULT_BOARD_WIDTH,
 $(document).ready( function()
 {
     board.draw('board');
+    
+    $('#board').on('click', '.tile_unclicked', ( function() 
+    {
+        var x = $(this).attr('data-x');
+        var y = $(this).attr('data-y');
+        
+        board.arrayOfTiles[y][x].click();
+        
+        board.draw('board');
+    }));
 });
