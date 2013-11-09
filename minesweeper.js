@@ -19,6 +19,21 @@ $(document).ready( function()
         
         board.draw('board');
     }));
+    
+    $('#board').on('mouseover', '.tile_unclicked', ( function() 
+    {
+        var x = $(this).attr('data-x');
+        var y = $(this).attr('data-y');
+        
+        if ( board.getTile(x, y).isMine === true )
+        {
+            document.getElementById("cheat_text").innerHTML = "a mine!";
+        }
+        else
+        {
+            document.getElementById("cheat_text").innerHTML = "not a mine!";
+        }
+    }));
 });
 
 function newGame()
