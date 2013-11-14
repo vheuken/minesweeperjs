@@ -52,7 +52,7 @@ Board.prototype.getTile = function (x, y)
 
 Board.prototype.clickTile = function (x, y)
 {
-    var tile = this.arrayOfTiles[y][x];
+    var tile = this.getTile(x, y);
     var arrayOfEmptyTiles = new Array();
     
     if ( tile.isMine === true )
@@ -86,7 +86,7 @@ Board.prototype.validate = function (x, y)
     {
         for (var x = 0; x < this.height; x++)
         {
-            var tile = this.arrayOfTiles[y][x];
+            var tile = this.getTile(x, y);
             
             if ( tile.isClicked === false )
             {
@@ -111,7 +111,7 @@ Board.prototype.draw = function (boardElementId)
     {
         for (var x = 0; x < this.width; x++)
         {
-            boardElement.innerHTML += this.arrayOfTiles[y][x].html;
+            boardElement.innerHTML += this.getTile(x, y).html;
         }
         boardElement.innerHTML += "<br>";
     }
